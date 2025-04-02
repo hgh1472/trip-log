@@ -1,0 +1,9 @@
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    implementation project(':trip-security')
+    implementation project(':trip-domain')
+
+    runtimeOnly project(':trip-storage')
+}
