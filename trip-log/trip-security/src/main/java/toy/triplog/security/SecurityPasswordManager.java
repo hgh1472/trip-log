@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import toy.triplog.domain.user.PasswordManager;
+import toy.triplog.domain.user.User;
 import toy.triplog.domain.user.UserSignInfo;
 
 @Component
@@ -16,6 +17,11 @@ public class SecurityPasswordManager implements PasswordManager {
     public UserSignInfo encodePassword(UserSignInfo userSignInfo) {
         String encodedPassword = passwordEncoder.encode(userSignInfo.getPassword());
         return userSignInfo.changePassword(encodedPassword);
+    }
+
+    @Override
+    public boolean validatePassword(User user, UserSignInfo userSignInfo) {
+        return passwordEncoder.matches(userSignInfo.getPassword(), user.getPassword());
     }
 
 }
