@@ -1,4 +1,4 @@
-package toy.triplog.api;
+package toy.triplog;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

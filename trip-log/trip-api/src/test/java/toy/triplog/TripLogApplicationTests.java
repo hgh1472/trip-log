@@ -1,4 +1,4 @@
-package toy.api;
+package toy.triplog;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
