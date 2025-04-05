@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import toy.triplog.domain.auth.PasswordManager;
+import toy.triplog.domain.user.NotFoundUserException;
 import toy.triplog.domain.user.User;
 import toy.triplog.domain.user.UserSignInfo;
 
@@ -20,8 +21,11 @@ public class SecurityPasswordManager implements PasswordManager {
     }
 
     @Override
-    public boolean validatePassword(User user, UserSignInfo userSignInfo) {
-        return passwordEncoder.matches(userSignInfo.getPassword(), user.getPassword());
+    public void validatePassword(User user, UserSignInfo userSignInfo) {
+        if (passwordEncoder.matches(userSignInfo.getPassword(), user.getPassword())) {
+            return;
+        }
+        throw new NotFoundUserException("잘못된 아이디 또는 비밀번호입니다.");
     }
 
 }
