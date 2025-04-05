@@ -1,6 +1,7 @@
 rootProject.name = 'trip-log'
 
-include 'trip-api'
-include 'trip-security'
-include 'trip-domain'
-include 'trip-storage'
+include('trip-api')
+include('trip-api')
+include('trip-security')
+include('trip-domain')
+include('trip-storage')
