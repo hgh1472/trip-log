@@ -3,6 +3,7 @@ package toy.triplog.domain.user;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import toy.triplog.domain.auth.PasswordManager;
 import toy.triplog.domain.auth.TokenAppender;
 import toy.triplog.domain.auth.TokenProvider;
 import toy.triplog.domain.auth.TokenInfo;

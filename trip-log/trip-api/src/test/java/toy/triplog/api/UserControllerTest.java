@@ -1,4 +1,4 @@
-package toy.api.api;
+package toy.triplog.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
@@ -9,8 +9,6 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
-import toy.triplog.api.SignUpRequest;
-import toy.triplog.api.UserController;
 import toy.triplog.domain.user.User;
 import toy.triplog.domain.user.UserService;
 

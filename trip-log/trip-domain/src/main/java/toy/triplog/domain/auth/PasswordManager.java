@@ -1,4 +1,7 @@
-package toy.triplog.domain.user;
+package toy.triplog.domain.auth;
+
+import toy.triplog.domain.user.User;
+import toy.triplog.domain.user.UserSignInfo;
 
 public interface PasswordManager {
 

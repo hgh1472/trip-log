@@ -2,6 +2,7 @@ package toy.triplog.domain.user;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import toy.triplog.domain.auth.PasswordManager;
 
 @Component
 @RequiredArgsConstructor

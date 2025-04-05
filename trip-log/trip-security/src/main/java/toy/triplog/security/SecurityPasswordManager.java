@@ -3,7 +3,7 @@ package toy.triplog.security;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-import toy.triplog.domain.user.PasswordManager;
+import toy.triplog.domain.auth.PasswordManager;
 import toy.triplog.domain.user.User;
 import toy.triplog.domain.user.UserSignInfo;
 
