@@ -3,6 +3,7 @@ package toy.triplog.security.config;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -31,7 +32,10 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/sign-up").permitAll()
                         .requestMatchers("/login").permitAll()
-                        .requestMatchers("/test").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/nations/{nationId}/reviews").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/nations/{nationId}/reviews").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/nations/{nationId}").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/nations/{nationId}/score").permitAll()
                 )
                 .build();
     }
