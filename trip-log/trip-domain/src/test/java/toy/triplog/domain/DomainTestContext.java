@@ -1,9 +1,9 @@
 package toy.triplog.domain;
 
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.TestConstructor;
+import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
-@TestConstructor(autowireMode = TestConstructor.AutowireMode.ALL)
+@ActiveProfiles("test")
 public abstract class DomainTestContext {
 }
