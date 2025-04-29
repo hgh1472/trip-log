@@ -3,6 +3,7 @@ package toy.triplog.storage.user;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import toy.triplog.domain.user.User;
+import toy.triplog.storage.StorageContextTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
