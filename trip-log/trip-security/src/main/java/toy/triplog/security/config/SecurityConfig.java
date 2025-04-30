@@ -32,6 +32,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/sign-up").permitAll()
                         .requestMatchers("/login").permitAll()
+                        .requestMatchers("/docs/index.html").permitAll()
                         .requestMatchers(HttpMethod.POST, "/nations/{nationId}/reviews").authenticated()
                         .requestMatchers(HttpMethod.GET, "/nations/{nationId}/reviews").permitAll()
                         .requestMatchers(HttpMethod.GET, "/nations/{nationId}").permitAll()
