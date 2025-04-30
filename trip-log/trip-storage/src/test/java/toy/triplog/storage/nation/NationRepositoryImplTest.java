@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import toy.triplog.domain.nation.Continent;
 import toy.triplog.domain.nation.Nation;
 import toy.triplog.domain.nation.NationRepository;
-import toy.triplog.storage.StorageContextTest;
+import toy.triplog.StorageContextTest;
 
 import java.util.Optional;
 

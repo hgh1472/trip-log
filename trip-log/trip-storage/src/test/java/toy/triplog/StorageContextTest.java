@@ -1,9 +1,9 @@
-package toy.triplog.security;
+package toy.triplog;
 
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
 @ActiveProfiles("test")
-public abstract class SecurityContextTest {
+public abstract class StorageContextTest {
 }

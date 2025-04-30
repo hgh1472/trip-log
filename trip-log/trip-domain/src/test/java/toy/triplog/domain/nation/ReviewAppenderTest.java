@@ -1,10 +1,9 @@
 package toy.triplog.domain.nation;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import toy.triplog.domain.DomainTestContext;
+import toy.triplog.DomainTestContext;
 
 import java.util.Optional;
 
@@ -18,14 +17,14 @@ class ReviewAppenderTest extends DomainTestContext {
     @Autowired
     private ReviewRepository reviewRepository;
     @Autowired
-    private NationGenerator nationGenerator;
+    private NationRepository nationRepository;
 
 
     @DisplayName("리뷰를 추가한다.")
     @Test
     void appendReview() {
         // given
-        Nation nation = nationGenerator.generateNation("한국", Continent.ASIA);
+        Nation nation = generateNation("한국", Continent.ASIA);
         WrittenReview writtenReview = new WrittenReview(nation.getId(), 1, 5, 5, 5, 5);
 
         // when
@@ -36,4 +35,11 @@ class ReviewAppenderTest extends DomainTestContext {
         assertThat(findReview).isPresent();
     }
 
+    private Nation generateNation(String name, Continent continent) {
+        return nationRepository.save(Nation.builder()
+                .name(name)
+                .continent(continent)
+                .build()
+        );
+    }
 }

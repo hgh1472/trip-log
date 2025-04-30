@@ -3,7 +3,7 @@ package toy.triplog.domain.nation;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import toy.triplog.domain.DomainTestContext;
+import toy.triplog.DomainTestContext;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -13,15 +13,15 @@ class NationFinderTest extends DomainTestContext {
     @Autowired
     private NationFinder nationFinder;
     @Autowired
-    private NationGenerator nationGenerator;
-    @Autowired
     private ReviewRepository reviewRepository;
+    @Autowired
+    private NationRepository nationRepository;
 
     @DisplayName("나라를 리포지토리로부터 조회한다.")
     @Test
     void findNation() {
         // given
-        Nation nation = nationGenerator.generateNation("한국", Continent.ASIA);
+        Nation nation = generateNation("한국", Continent.ASIA);
 
         // when
         Nation find = nationFinder.findNation(nation.getId());
@@ -36,7 +36,7 @@ class NationFinderTest extends DomainTestContext {
     @Test
     void findNationWithScore() {
         // given
-        Nation nation = nationGenerator.generateNation("한국", Continent.ASIA);
+        Nation nation = generateNation("한국", Continent.ASIA);
         Review review = Review.builder()
                 .nationId(nation.getId())
                 .userId(1L)
@@ -55,5 +55,13 @@ class NationFinderTest extends DomainTestContext {
         assertThat(averageScore)
                 .extracting("total", "food", "cleanliness", "safety", "attraction")
                 .containsExactly(10.0, 10.0, 10.0, 10.0, 10.0);
+    }
+
+    private Nation generateNation(String name, Continent continent) {
+        return nationRepository.save(Nation.builder()
+                .name(name)
+                .continent(continent)
+                .build()
+        );
     }
 }

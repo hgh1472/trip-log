@@ -5,7 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import toy.triplog.domain.user.User;
-import toy.triplog.storage.StorageContextTest;
+import toy.triplog.StorageContextTest;
 
 import java.util.Optional;
 

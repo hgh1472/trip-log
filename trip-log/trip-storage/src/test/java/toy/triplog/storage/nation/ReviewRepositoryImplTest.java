@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import toy.triplog.domain.nation.*;
-import toy.triplog.storage.StorageContextTest;
+import toy.triplog.StorageContextTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

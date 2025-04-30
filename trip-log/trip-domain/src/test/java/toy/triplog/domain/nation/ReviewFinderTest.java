@@ -3,7 +3,7 @@ package toy.triplog.domain.nation;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import toy.triplog.domain.DomainTestContext;
+import toy.triplog.DomainTestContext;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,13 +14,13 @@ class ReviewFinderTest extends DomainTestContext {
     @Autowired
     private ReviewRepository reviewRepository;
     @Autowired
-    private NationGenerator nationGenerator;
+    private NationRepository nationRepository;
 
     @DisplayName("나라의 평균 점수를 조회한다.")
     @Test
     void findAverageScore() {
         // given
-        Nation nation = nationGenerator.generateNation("한국", Continent.ASIA);
+        Nation nation = generateNation("한국", Continent.ASIA);
         for (int i = 0; i < 5; i++) {
             reviewRepository.save(createReview(nation.getId(), 1 + i, 2 + i, 3 + i, 4 + i));
         }
@@ -38,7 +38,7 @@ class ReviewFinderTest extends DomainTestContext {
     @Test
     void findReviewsAtPage() {
         // given
-        Nation nation = nationGenerator.generateNation("한국", Continent.ASIA);
+        Nation nation = generateNation("한국", Continent.ASIA);
         for (int i = 0; i < 15; i++) {
             reviewRepository.save(createReview(nation.getId(), 5, 5, 5, 5));
         }
@@ -53,7 +53,7 @@ class ReviewFinderTest extends DomainTestContext {
         assertThat(reviewsAtPage.getTotalElements()).isEqualTo(15);
     }
 
-    private static Review createReview(Long nationId, int attraction, int food, int safety, int cleanliness) {
+    private Review createReview(Long nationId, int attraction, int food, int safety, int cleanliness) {
         return Review.builder()
                 .nationId(nationId)
                 .userId(1L)
@@ -64,4 +64,11 @@ class ReviewFinderTest extends DomainTestContext {
                 .build();
     }
 
+    private Nation generateNation(String name, Continent continent) {
+        return nationRepository.save(Nation.builder()
+                .name(name)
+                .continent(continent)
+                .build()
+        );
+    }
 }

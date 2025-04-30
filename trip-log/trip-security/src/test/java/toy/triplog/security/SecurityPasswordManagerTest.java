@@ -1,10 +1,10 @@
 package toy.triplog.security;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import toy.triplog.SecurityContextTest;
 import toy.triplog.domain.user.NotFoundUserException;
 import toy.triplog.domain.user.User;
 import toy.triplog.domain.user.UserSignInfo;
