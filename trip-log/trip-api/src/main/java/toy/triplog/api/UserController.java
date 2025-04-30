@@ -3,6 +3,7 @@ package toy.triplog.api;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,9 +27,15 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<Void> login(@Valid @RequestBody LoginRequest loginRequest) {
         TokenInfo token = userService.login(loginRequest.toUserSignInfo());
+
+        ResponseCookie refreshToken = ResponseCookie.from("refresh_token", token.getRefreshToken())
+                .httpOnly(true)
+                .secure(true)
+                .build();
+
         return ResponseEntity.ok()
                 .header(HttpHeaders.AUTHORIZATION, token.getAccessToken())
-                .header(HttpHeaders.SET_COOKIE, token.getRefreshToken())
+                .header(HttpHeaders.SET_COOKIE, refreshToken.toString())
                 .build();
     }
 
