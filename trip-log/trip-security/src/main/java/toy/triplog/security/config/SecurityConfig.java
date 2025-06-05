@@ -37,6 +37,9 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/nations/{nationId}/reviews").permitAll()
                         .requestMatchers(HttpMethod.GET, "/nations/{nationId}").permitAll()
                         .requestMatchers(HttpMethod.GET, "/nations/{nationId}/score").permitAll()
+
+                        .requestMatchers("/event/{eventId}/waiting").authenticated()
+                        .requestMatchers("/event/{eventId}").authenticated()
                 )
                 .build();
     }
