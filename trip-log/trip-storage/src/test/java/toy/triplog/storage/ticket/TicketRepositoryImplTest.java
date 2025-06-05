@@ -28,7 +28,6 @@ class TicketRepositoryImplTest extends StorageContextTest {
 
     @DisplayName("락을 걸고 조회하면, 다른 트랜잭션에서 조회할 수 없다.")
     @Test
-        // TODO : LOCK 테스트?
     void findTicketWithLock() throws InterruptedException {
         // given
         TicketEntity save = jpaTicketRepository.save(createTicketEntity(TicketStatus.AVAILABLE));
